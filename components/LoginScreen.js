@@ -22,7 +22,7 @@ export default function LoginScreen() {
       style={[
         styles.container,
         colorScheme === "light"
-          ? { backgroundColor: "#0c0fc0" }
+          ? { backgroundColor: "#B8b8b8" }
           : { backgroundColor: "#333333" },
       ]}
     >
@@ -36,7 +36,6 @@ export default function LoginScreen() {
         />
         <Text style={styles.headerText}>Little Lemon</Text>
       </View>
-      <Text style={styles.headerText}>Welcome to Little Lemon</Text>
       <Text style={styles.regularText}>Login to continue </Text>
 
       <TextInput

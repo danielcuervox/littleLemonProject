@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   useColorScheme,
+  View,
 } from "react-native";
 //import { ScrollView } from 'react-native-reanimated/lib/typescript/Animated';
 
@@ -24,31 +25,48 @@ export default function WelcomeScreen() {
       <ScrollView
         keyboardDismissMode="on-drag"
         style={[
-          styles.container,
+          styles.scrollview_container,
           colorScheme === "light"
-            ? { backgroundColor: "#ffffff" }
+            ? { backgroundColor: "#b8b8b8" }
             : { backgroundColor: "#333333" },
         ]}
       >
-        <Image
-          style={styles.logo}
-          source={require("../assets/images/image-lemon.png")}
-          resizeMode="cover"
-          accessible={true}
-          accessibilityLabel={"Little Lemon Logo"}
-        />
-        <Text style={styles.text}>
-          Little Lemon, your local Mediterranean Bistro
-        </Text>
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.logo}
+            source={require("../assets/images/little-lemon-logo.png")}
+            resizeMode="cover"
+            accessible={true}
+            accessibilityLabel={"Little Lemon Logo"}
+          />
+          <Text style={styles.text}>
+            Little Lemon, your local Mediterranean Bistro
+          </Text>
 
-        <Pressable
-          style={styles.button}
-          onPress={() => {
-            router.push("/login");
-          }}
-        >
-          <Text style={styles.buttonText}>Newsletter</Text>
-        </Pressable>
+         <Pressable
+            style={styles.button}
+            onPress={() => {
+              router.push("/login");
+            }}>
+            <Text style={styles.buttonText}>Login</Text>
+          </Pressable>
+
+          <Pressable
+            style={styles.button}
+            onPress={() => {
+              router.push("/subscribe");
+            }}>
+            <Text style={styles.buttonText}>Newsletter</Text>
+          </Pressable>
+
+          <Pressable
+            style={styles.button}
+            onPress={() => {
+              router.push("/menu");
+            }}>
+            <Text style={styles.buttonText}>Menu</Text>
+          </Pressable>
+        </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -58,6 +76,11 @@ const styles = StyleSheet.create({
   scrollview_container: {
     flex: 1,
     indicatorStyle: "white",
+  },
+  imageContainer: {
+    alignItems: "center", // Centra horizontalmente el contenido
+    justifyContent: "center",
+    marginTop: 40, // Espacio superior opcional
   },
   title: {
     padding: 40,
@@ -97,8 +120,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
   logo: {
-    width: 100,
-    height: 100,
-    borderRadius: 20,
+    width: 150,
+    height: 270,
   },
 });

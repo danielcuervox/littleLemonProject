@@ -91,7 +91,7 @@ const menuStyles = StyleSheet.create({
   },
    itemText: {
 
-    color: '#F4CE14',
+    color: '#f41414',
 
     fontSize: 20,
 
