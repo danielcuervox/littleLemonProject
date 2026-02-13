@@ -18,7 +18,7 @@ export default function LoginScreen() {
   const [buttonLogin, setButtonLogin] = useState(false);
 
   return (
-    <ScrollView
+    <View
       style={[
         styles.container,
         colorScheme === "light"
@@ -38,36 +38,37 @@ export default function LoginScreen() {
       </View>
       <Text style={styles.regularText}>Login to continue </Text>
 
-      <TextInput
-        style={styles.inputBox}
-        value={email}
-        onChangeText={onChangeEmail}
-        placeholder={"Please enter your email"}
-        keyboardType={"email-address"}
-      />
+      <View style={styles.buttonWrapper}>
+        <TextInput
+          style={styles.inputBox}
+          value={email}
+          onChangeText={onChangeEmail}
+          placeholder={"Please enter your email"}
+          keyboardType={"email-address"}
+        />
 
-      <TextInput
-        secureTextEntry={true}
-        style={styles.inputBox}
-        value={password}
-        onChangeText={onChangePassword}
-        placeholder={"Please leave password"}
-        keyboardType={"default"}
-      />
+        <TextInput
+          secureTextEntry={true}
+          style={styles.inputBox}
+          value={password}
+          onChangeText={onChangePassword}
+          placeholder={"Please leave password"}
+          keyboardType={"default"}
+        />
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            setButtonLogin((buttonLogin) => !buttonLogin);
 
-      <Pressable
-        style={styles.button}
-        onPress={() => {
-          setButtonLogin((buttonLogin) => !buttonLogin);
-
-          router.back();
-        }}
-      >
-        <Text style={styles.buttonText}>
-          {buttonLogin ? "Logout" : "Login"}
-        </Text>
-      </Pressable>
-    </ScrollView>
+            router.back();
+          }}
+        >
+          <Text style={styles.buttonText}>
+            {buttonLogin ? "Logout" : "Login"}
+          </Text>
+        </Pressable>
+      </View>
+    </View>
   );
 }
 
@@ -113,13 +114,17 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
   headerWrapper: {
-    flexDirection: "row",
+    alignItems: "center",
     justifyContent: "center",
-    margin: 10,
+    margin: 40,
   },
   logo: {
     width: 100,
     height: 100,
     borderRadius: 20,
+  },
+
+  buttonWrapper: {
+    alignItems: "center",
   },
 });
